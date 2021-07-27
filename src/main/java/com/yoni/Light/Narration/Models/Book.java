@@ -49,4 +49,15 @@ public class Book {
     public void setGenres(List<String> genres) {
         this.genres = genres;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", authorId=" + authorId +
+                ", coverImageLink=" + coverImageLink +
+                ", genres=" + genres +
+                '}';
+    }
 }
