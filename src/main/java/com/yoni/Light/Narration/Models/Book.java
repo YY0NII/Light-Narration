@@ -1,14 +1,27 @@
 package com.yoni.Light.Narration.Models;
 
-import java.net.URL;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
+
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 500)
     private String title;
-    private Long authorId; //TODO: this will be an issue for light novels that have multiple authors
-    private URL coverImageLink;
-    private List<String> genres;
+
+    @Column(length = 500)
+    private String authors;
+
+    @Column(length = 500)
+    private String coverImageLink;
+
+    @Column(length = 10000)
+    private String description;
 
     public Long getId() {
         return id;
@@ -26,28 +39,28 @@ public class Book {
         this.title = title;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public String getAuthors() {
+        return authors;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthors(String authors) {
+        this.authors = authors;
     }
 
-    public URL getCoverImageLink() {
+    public String getCoverImageLink() {
         return coverImageLink;
     }
 
-    public void setCoverImageLink(URL coverImageLink) {
+    public void setCoverImageLink(String coverImageLink) {
         this.coverImageLink = coverImageLink;
     }
 
-    public List<String> getGenres() {
-        return genres;
+    public String getDescription() {
+        return description;
     }
 
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -55,9 +68,9 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", authorId=" + authorId +
-                ", coverImageLink=" + coverImageLink +
-                ", genres=" + genres +
+                ", authors=" + authors +
+                ", coverImageLink='" + coverImageLink + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
