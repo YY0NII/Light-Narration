@@ -47,7 +47,6 @@ public class OpenLibClient {
             Object description = bookInfoItemJson.getJSONObject("volumeInfo").get("description");
             return (String) description;
         } catch (JSONException e) {
-            e.printStackTrace();
             return "";
         }
     }
