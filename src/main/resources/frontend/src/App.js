@@ -1,37 +1,19 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import { Component } from 'react';
+import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BookList from './BookList';
 
 class App extends Component {
-  state = {
-    books: []
-  };
-
-  async componentDidMount() {
-    const response = await fetch('/books');
-    const body = await response.json();
-    this.setState({ books: body });
-  }
-
   render() {
-    const {books} = this.state;
-
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div className="App-intro">
-            <h2>Books</h2>
-            {books.map(book =>
-              <div key={book.id}>
-                {book.title} 
-              </div> 
-              )
-            }
-          </div>
-        </header>
-      </div>
-    );
+      <Router>
+        <Switch>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/books" exact={true} component={BookList} />
+        </Switch>
+      </Router>
+    )
   }
 }
 
